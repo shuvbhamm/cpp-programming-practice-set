@@ -16,7 +16,7 @@ main(){
         cin>>n;
         for(int i=1;i<=(n/2);i++){
             if(n%i==0){
-                // cout<<i<<"\n"; sum of divisor should equals to original number EX: 28
+                //sum of divisor should equals to original number EX: 28
                 sum=sum+i;
             }
         }
