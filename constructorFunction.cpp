@@ -4,8 +4,8 @@
 //     >   no return type
 //     >   can not call
 //     >   Autocalls when objects is created
-//     >   Overload
-//     >   type >>object>>parameter>>copy
+//     >   Overload:
+//         type: >>default>>parameter>>copy
 // WHY CONSTRUCTOR :
 //     >   to initialize instance varible (mostly in private section of class)
 #include <iostream>

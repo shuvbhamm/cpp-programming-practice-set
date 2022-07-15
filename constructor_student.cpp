@@ -25,7 +25,7 @@ class student{
 main(){
     student s;
     student s1(101,"shubham",99);
-    student s2(102,"pritish",33);
+    student s2(102,"pritish",13);
     
     s.display();
     s1.display();

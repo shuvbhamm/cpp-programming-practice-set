@@ -4,8 +4,8 @@ class Data{
     int a,b;
     public:
         Data(){
-            a=4;
-            b=5;
+            a=7;
+            b=8;
         }
         Data(int x,int y){
             a=x;
@@ -17,7 +17,7 @@ class Data{
 };
 main(){
     Data d1;
-    Data d2(7,8);
+    Data d2(4,5);
     Data d3(123,456);
     d1.display();
     d2.display();
