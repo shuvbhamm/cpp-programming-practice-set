@@ -5,7 +5,7 @@ class employee{
     string name;
     float salary;
     string department;
-    int mobile;
+    long long int mobile;   //long long int to store bigger integer number such as phone number 
 
     public:
     employee(){
@@ -15,7 +15,7 @@ class employee{
         department="N/A";
         mobile=0;
     }
-    employee(int a,string b,float c,string d,int e){
+    employee(int a,string b,float c,string d,long long int e){
         id=a;
         name=b;
         salary=c;
@@ -39,8 +39,8 @@ class employee{
 };
 main(){
     employee e;
-    employee e1(101,"shubham",25000,"IT",987654321);
-    employee e2(420,"pritish",10,"HR",987456123);
+    employee e1(101,"shubham",25000,"IT",9876543210);
+    employee e2(420,"pritish",10,"HR",9874561234);
     employee e3(e1);
     e.display();
     e1.display();
