@@ -1,3 +1,4 @@
+// incomplete
 #include <iostream>
 using namespace std;
 class person{
@@ -6,14 +7,22 @@ class person{
         string name;
     public:
         void input(){
-            cout<<"enter name : ";
+            cout<<"\nenter name : ";
             cin>>name;
-            cout<<"\nenter age : ";
+            cout<<"enter age : ";
             cin>>age;
         }
-        void compareAge(person p2,person p3){
+        static void compareAge(person *p,int n){
             cout<<"\n-------OLDEST CITIZEN-------\n";
-            
+            int max=0,location=0;
+            for(int i=0;i<n;i++){
+                if(max<p[i].age){
+                    max=p[i].age;
+                    location=i;
+                }
+            }
+            cout<<"name : "<<p[location].name<<endl;
+            cout<<"age : "<<p[location].age;
         }
 };
 main(){
@@ -24,4 +33,5 @@ main(){
     for(int i=0;i<n;i++){
         p[i].input();
     }
+    person::compareAge(p,n);
 }
