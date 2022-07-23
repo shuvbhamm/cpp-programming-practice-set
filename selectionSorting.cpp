@@ -6,7 +6,7 @@ main(){
         cout<<"enter number : ";
         cin>>a[i];
     }
-    for(i=0;i<4;i++){
+    for(i=0;i<5;i++){
         for(j=i+1;j<5;j++){
             if(a[i]>a[j]){  //a[i]>a[j] for ascending and a[i]<a[j] for descending
                 temp=a[i];

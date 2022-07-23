@@ -14,7 +14,7 @@ class person{
         }
         static void compareAge(person *p,int n){
             cout<<"\n-------OLDEST CITIZEN-------\n";
-            int max=0,location=0;
+            int max=p[0].age,location=0;
             for(int i=0;i<n;i++){
                 if(max<p[i].age){
                     max=p[i].age;
