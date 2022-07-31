@@ -5,20 +5,24 @@ class prime{
         int n;
     public:
         void input();
-        void operator++();
         void display();
+        friend void operator++(prime &p);
 };
 void prime::input(){
     cout<<"enter any prime number : ";
     cin>>n;
 }
-void prime::operator++(){
+void prime::display(){
+    cout<<"\n------------Prime------------\n";
+    cout<<n;
+}
+void operator++(prime &p){
     int count=0;
     while(1){
-        n++;
+        p.n++;
         count=0;
-        for(int i=1;i<=(n/2);i++){
-            if(n%i==0){
+        for(int i=1;i<=p.n/2;i++){
+            if(p.n%i==0){
                 count++;
             }
         }
@@ -26,10 +30,6 @@ void prime::operator++(){
             break;
         }
     }
-}
-void prime::display(){
-    cout<<"\n---------Prime---------\n";
-    cout<<n;
 }
 main(){
     prime p;
@@ -44,5 +44,6 @@ main(){
     p.display();
     ++p;
     p.display();
-
+    ++p;
+    p.display();
 }
