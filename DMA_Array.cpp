@@ -7,11 +7,13 @@ class dynamic{
     public:
         dynamic(){
             p=new int[5];
-            sizeOFarray=sizeof(int[5])/sizeof(int);
+            sizeOFarray=5;
+            // sizeOFarray=sizeof(int[5])/sizeof(int);
         }
         dynamic(int size){
             p=new int[size];
-            sizeOFarray=sizeof(int[size])/sizeof(int);
+            sizeOFarray=size;
+            // sizeOFarray=sizeof(int[size])/sizeof(int);
         }
         void input(){
             for(int i=0;i<sizeOFarray;i++){
