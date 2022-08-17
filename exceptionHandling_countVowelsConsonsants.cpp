@@ -1,5 +1,5 @@
-// if vowels are more then int exception
-// if consonants are more then float exception
+// if vowels are more than consonents then int exception
+// if consonants are more than vowels  then float exception
 // and if both are equal then char exception
 #include <iostream>
 using namespace std;
