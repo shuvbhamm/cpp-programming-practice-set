@@ -1,8 +1,9 @@
 #include <iostream>
 #include <set>
+#include <iterator>
 using namespace std;
 main(){
-    set <int,greater> s;
+    set <int> s;
     int a;
     while(1){
         cout<<"enter number : ";
@@ -12,11 +13,13 @@ main(){
             break;
         }
     }
-    
-    int index=0,sum=0;
-    while(s.at(index)!=(-1)){
-        sum+=s.at(index);
-        index++;
+    set <int>::iterator p; 
+    int sum=0;
+    for(p=s.begin();p!=s.end();p++){
+        if(*p==-1){
+            continue;
+        }
+        sum+=(*p);
     }
     cout<<"sum : "<<sum;
 }
