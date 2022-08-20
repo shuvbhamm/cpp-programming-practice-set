@@ -3,7 +3,7 @@
 #include <iterator>
 using namespace std;
 main(){
-    set <int> s;
+    set <int,greater <int>> s;
     int a;
     while(1){
         cout<<"enter number : ";
@@ -17,7 +17,7 @@ main(){
     int sum=0;
     for(p=s.begin();p!=s.end();p++){
         if(*p==-1){
-            continue;
+            break;
         }
         sum+=(*p);
     }

@@ -4,7 +4,8 @@
 using namespace std;
 
 main(){
-    set <int> s;
+    // set <int ,greater <int>> s;  //for descending
+    set <int> s;  //for ascending
     s.insert(90);
     s.insert(80);
     s.insert(70);
