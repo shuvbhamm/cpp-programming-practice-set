@@ -9,7 +9,8 @@ class Data{
             cout<<"enter a : ";
             cin>>a;
         }
-        virtual void cal()=0;
+        virtual void cal()=0;       //if you create a pure virtual function then it is is compulsary for all the child class
+                                    //and if pure virtual function was created then the class which holds it calls abstract class
 };
 class square:public Data{
     public:
