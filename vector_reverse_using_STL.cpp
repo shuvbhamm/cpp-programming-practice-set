@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 main(){
@@ -10,12 +11,7 @@ main(){
         cin>>a;
         v.push_back(a);
     }
-    for(i=0;i<5;i++){
-        int temp=v.at(i);
-        v.at(i)=v.at(4-i);
-        v.at(4-i)=temp;
-    }
-    for(i=0;i<5;i++){
+    reverse(v.begin(),v.end());
+    for(i=0;i<v.size();i++)
         cout<<v.at(i)<<endl;
-    }
 }
