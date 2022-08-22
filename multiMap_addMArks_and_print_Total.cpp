@@ -3,33 +3,32 @@
 #include <iterator>
 using namespace std;
 main(){
-    multimap <string , int> m;
-    int marks,key;
+    multimap<string,int> m;
+    int marks,total=0,max=0;
     string name;
+
     for(int i=1;i<=5;i++){
         cout<<"enter name : ";
         cin>>name;
+        total=0;
         for(int j=1;j<=3;j++){
             cout<<"enter marks : ";
             cin>>marks;
-
-            m.insert(pair<string,int>(name,marks));
+            total+=marks;
+            m.insert(pair<string,int>(name,total));
         }
         cout<<endl;
     }
 
-    cout<<"enter key to search name : ";
-    cin>>key;
-
     multimap<string,int>::iterator p;
 
-    cout<<"\nNAME\t\tMARKS\n-----------------------\n";
-    
     for(p=m.begin();p!=m.end();p++){
-        if(key==p->second)
-        {
-            cout<<p->first<<"\t\t";
-            cout<<p->second<<endl;
+        if(max<p->second){
+            max=p->second;
+            name=p->first;
+            total=p->second;
         }
     }
+    cout<<"NAME\t\tTOTAL\n";
+    cout<<name<<"\t\t"<<total;
 }

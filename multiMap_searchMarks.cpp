@@ -18,7 +18,7 @@ main(){
         cout<<endl;
     }
 
-    cout<<"enter key to search name : ";
+    cout<<"enter key to search marks : ";
     cin>>key;
 
     multimap<string,int>::iterator p;

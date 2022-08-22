@@ -4,7 +4,7 @@
 using namespace std;
 main(){
     multimap <string , int> m;
-    int marks,key;
+    int marks;
     string name;
     for(int i=1;i<=5;i++){
         cout<<"enter name : ";
@@ -18,18 +18,10 @@ main(){
         cout<<endl;
     }
 
-    cout<<"enter key to search name : ";
-    cin>>key;
-
     multimap<string,int>::iterator p;
-
     cout<<"\nNAME\t\tMARKS\n-----------------------\n";
-    
     for(p=m.begin();p!=m.end();p++){
-        if(key==p->second)
-        {
-            cout<<p->first<<"\t\t";
-            cout<<p->second<<endl;
-        }
+        cout<<p->first<<"\t\t";
+        cout<<p->second<<endl;
     }
 }

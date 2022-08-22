@@ -4,8 +4,8 @@
 using namespace std;
 main(){
     multimap <string , int> m;
-    int marks,key;
-    string name;
+    int marks;
+    string name,key;
     for(int i=1;i<=5;i++){
         cout<<"enter name : ";
         cin>>name;
@@ -26,7 +26,7 @@ main(){
     cout<<"\nNAME\t\tMARKS\n-----------------------\n";
     
     for(p=m.begin();p!=m.end();p++){
-        if(key==p->second)
+        if(key==p->first)
         {
             cout<<p->first<<"\t\t";
             cout<<p->second<<endl;
