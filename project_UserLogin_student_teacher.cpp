@@ -29,7 +29,7 @@ main(){
 
                 cin>>choice;
 
-                if(choice==1){
+                if(choice==1){          //for adding question to the file
                     ofstream fout;
                         fout.open("exam.txt",ios::app);
                         string ques,opt1,opt2,opt3,opt4,ans;
@@ -65,6 +65,7 @@ main(){
                                 <<"Result : Pass\n"<<endl;
                         }
                     }
+                    fin.close();
                 }
                 else if(choice == 3){
                     cout<<"---------FAILED STUDENTS---------"<<endl;
@@ -87,6 +88,7 @@ main(){
                                 <<"Result : FAIL\n"<<endl;
                         }
                     }
+                    fin.close();
                 }            
             }
             else{
