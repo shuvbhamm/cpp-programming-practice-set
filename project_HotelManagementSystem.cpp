@@ -1,5 +1,5 @@
-// userId - SeedIT
-// Password -air3636
+// username - shubham
+// Password - air3636
 
 #include <iostream>
 #include <fstream>
@@ -11,36 +11,38 @@ void Tarrif(){
         <<"GENERAL - 1000 Rs per day"<<endl
         <<"JOINT - 2500 Rs per day"<<endl
         <<"DELUXE - 4000 Rs per day"<<endl
-        <<"FULLDELUXE -5000 Rs per day"<<endl;
+        <<"FULLDELUXE -5000 Rs per day\n"<<endl;
 }
-void Bill(string name,string address,long long int mobNum,string roomType,int days,float bill){
+void Bill(string name,string address,long long int mobNum,int roomNumber,string roomType,int days,float bill){
     ofstream fout;("HotelBill.txt");
     fout.open("HotelBill.txt");
     fout<<"------HOTEL VRINDAVAN DURG----------\n"
         <<"---------------BILL-----------------\n"
-        <<"NAME : \t\t"<<name<<"\n"
-        <<"ADDR : \t\t"<<address<<"\n"
-        <<"MOB  : \t\t"<<mobNum<<"\n"
-        <<"Room : \t\t"<<roomType<<"\n"
-        <<"Days : \t\t"<<days<<" days\n"
+        <<"NAME   : \t"<<name<<"\n"
+        <<"ADDR   : \t"<<address<<"\n"
+        <<"MOB    : \t"<<mobNum<<"\n"
+        <<"RoomNo : \t"<<roomNumber<<"\n"
+        <<"Room   : \t"<<roomType<<"\n"
+        <<"Days   : \t"<<days<<" days\n"
         <<"Amount : \t"<<bill<<" INR \n"
         <<"\nThankyou\nHotel Vrindavan\nDurg CG";
     
     system("cls");
     cout<<"------HOTEL VRINDAVAN DURG----------\n"
         <<"---------------BILL-----------------\n"
-        <<"NAME : \t\t"<<name<<"\n"
-        <<"ADDR : \t\t"<<address<<"\n"
-        <<"MOB  : \t\t"<<mobNum<<"\n"
-        <<"Room : \t\t"<<roomType<<"\n"
-        <<"Days : \t\t"<<days<<" days\n"
+        <<"NAME   : \t"<<name<<"\n"
+        <<"ADDR   : \t"<<address<<"\n"
+        <<"MOB    : \t"<<mobNum<<"\n"
+        <<"RoomNo : \t"<<roomNumber<<"\n"
+        <<"Room   : \t"<<roomType<<"\n"
+        <<"Days   : \t"<<days<<" days\n"
         <<"Amount : \t"<<bill<<" INR \n"
         <<"\nThankyou\nHotel Vrindavan\nDurg CG";
 
     fout.close(); 
 }
 main(){
-    int choice;
+    int choice,roomNum[50];
     string userID,pswd;
     home:
     system("cls");  //used to clear terminal and comes with sdlib.h header file
@@ -59,11 +61,12 @@ main(){
         cout<<"Enter Password : ";
         cin>>pswd;
 
-        if(userID=="SeedIT" && pswd=="air3636"){
+        if(userID=="shubham" && pswd=="air3636"){
             
             system("cls");
 
             cout<<"Succesfully Logged in\n"<<endl;
+            owner:
             cout<<"----------Welcome----------"<<endl
                 <<"1 : Check-In"<<endl
                 <<"2 : Check Room Number"<<endl
@@ -79,7 +82,7 @@ main(){
 
                 string name,address,roomType;
                 long long int mobile;
-                int days;
+                int days,roomNumber;
                 float bill;
 
                 system("cls");
@@ -112,10 +115,22 @@ main(){
                 if(roomType=="JOINT"){
                     bill=days*2500;
                 }
+                
+                for(int i=1;i<50;i++)
+                {
+                    if(roomNum[i]!=1){
+                        roomNumber=i;
+                        roomNum[i]=1;
+                        break;
+                    }
+                }
 
-                fout<<name<<"\t"<<address<<"\t"<<mobile<<"\t"<<roomType<<"\t"<<days<<"\t"<<bill<<"\n";
-                Bill(name,address,mobile,roomType,days,bill);
+                fout<<roomNumber<<"\t"<<name<<"\t"<<address<<"\t"<<mobile<<"\t"<<roomType<<"\t"<<days<<"\t"<<bill<<"\n";
+                Bill(name,address,mobile,roomNumber,roomType,days,bill);
                 fout.close();
+                
+                cout<<"\n\n";
+                goto owner;
             }
             if(choice==5){
                 goto home;
