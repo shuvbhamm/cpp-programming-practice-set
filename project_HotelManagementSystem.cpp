@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <vector>
 #include <stdlib.h>
 using namespace std;
 
@@ -12,7 +13,7 @@ void Tarrif()
         <<"GENERAL     -  1000 Rs per day"<<endl
         <<"JOINT       -  2500 Rs per day"<<endl
         <<"DELUXE      -  4000 Rs per day"<<endl
-        <<"FULLDELUXE  -  5000 Rs per day\n"<<endl;
+        <<"BANQUET     -  5000 Rs per day\n"<<endl;
 }
 
 
@@ -51,10 +52,26 @@ void Bill(string name,string address,long long int mobNum,int roomNumber,string 
 
 main(){
 
-    int choice,roomNum[20];
+    int choice,totalRooms=30;
     string userID,pswd;
     home:
     system("cls");  //used to clear terminal and comes with sdlib.h header file
+
+
+    ifstream fin;
+    vector <int> OccupiedRoom;
+    fin.open("Hotel.txt");
+    while(1){
+        int roomNumber;
+        string null;
+        fin>>roomNumber>>null>>null>>null>>null>>null>>null;
+        if(fin.eof()){
+            break;
+        }
+        OccupiedRoom.push_back(roomNumber);
+    }
+    fin.close();
+
 
     cout<<"---------HOTEL VRINDAVAN DURG--------\n"<<endl
         <<"Press 1 for Owner"<<endl
@@ -126,12 +143,25 @@ main(){
                 if(roomType=="JOINT"){
                     bill=days*2500;
                 }
-                
-                for(int i=1;i<20;i++)
+                int counter=0;
+                for(int i=1;i<totalRooms;i++)   
                 {
-                    if(roomNum[i]!=1){
+                    counter=0;
+                    for(int j=0;j<OccupiedRoom.size();j++){
+
+                        // if(roomNum[i]!=1){
+                        //     roomNumber=i;
+                        //     roomNum[i]=1;
+                        //     break;
+                        // }
+                        if(i==OccupiedRoom[j]){
+                            counter++;
+                            continue;
+                        }
+                    }
+                    if(counter==0){
+                        OccupiedRoom.push_back(i);
                         roomNumber=i;
-                        roomNum[i]=1;
                         break;
                     }
                 }
@@ -204,6 +234,59 @@ main(){
                     system("cls");
                     goto owner;
                 }
+            }
+
+            else if(choice==4)  //CHECK OUT
+            {
+                string name,addr,mob,roomType,days,cost;
+                int roomNum;
+
+                system("cls");
+
+                ifstream fin;
+                ofstream fout;
+
+                int key;
+                cout<<"--------CHECK OUT--------\n"<<endl;
+                cout<<"Enter room number to checkout : ";
+                cin>>key;
+
+                fin.open("Hotel.txt");
+                fout.open("TemporaryHotelFile.txt");
+
+                string CheckOutName;
+                while(1)
+                {
+                    fin>>roomNum>>name>>addr>>mob>>roomType>>days>>cost;
+                    if(fin.eof()){
+                        cout<<"\nThankyou "<<CheckOutName<<" for visiting us."<<endl;
+                        break;
+                    }
+                    if(key!=roomNum){
+                        fout<<roomNum<<"\t"<<name<<"\t"<<addr<<"\t"<<mob<<"\t"<<roomType<<"\t"<<days<<"\t"<<cost<<"\n";
+                    }
+                    else{
+                        CheckOutName=name;
+                    }
+                }
+                fin.close();
+                fout.close();
+
+                fin.open("TemporaryHotelFile.txt");
+                fout.open("Hotel.txt");
+                while(1)
+                {
+                    fin>>roomNum>>name>>addr>>mob>>roomType>>days>>cost;
+                    if(fin.eof()){
+                        break;
+                    }
+                    fout<<roomNum<<"\t"<<name<<"\t"<<addr<<"\t"<<mob<<"\t"<<roomType<<"\t"<<days<<"\t"<<cost<<"\n";
+                }
+                fin.close();
+                fout.close();
+
+                cout<<"\n\n";
+                goto owner;
             }
 
             else if(choice==5)  //EXIT back to main menu
