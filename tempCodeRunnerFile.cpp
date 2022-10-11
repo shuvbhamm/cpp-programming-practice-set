@@ -1,5 +1,8 @@
 #include <iostream>
+#include <vector>
+using namespace std;
 main(){
-    int a[5];
-    std::cout<<a[3];
+    vector<int> v {1,2,3,4,5,66};
+    v.erase(v.begin()+1);
+    cout<<v[3];
 }

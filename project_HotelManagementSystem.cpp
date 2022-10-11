@@ -79,7 +79,7 @@ main(){
         <<"\nEnter your Choice : ";
     cin>>choice;
 
-    if(choice==1){
+    if(choice==1){  //OWNER MODE
     	system("cls");
         login:
         cout<<"Enter UserName : ";
@@ -251,6 +251,13 @@ main(){
                 cout<<"Enter room number to checkout : ";
                 cin>>key;
 
+                for(int i=0;i<OccupiedRoom.size();i++){
+                    if(OccupiedRoom[i]==key){
+                        OccupiedRoom.erase(OccupiedRoom.begin()+i);
+                        break;
+                    }
+                }
+
                 fin.open("Hotel.txt");
                 fout.open("TemporaryHotelFile.txt");
 
@@ -297,6 +304,53 @@ main(){
         else{
             cout<<"Wrong login credentials Try Again \n"<<endl;
             goto login;
+        }
+    }
+
+    else if(choice==2){     //CUSTOMER MODE
+
+
+        system("cls");
+        customer:
+        int choice;
+
+        cout<<"---------Welcome to Hotel Vrindavan---------\n"<<endl
+            <<"1 : Check your Bill invoice"<<endl
+            <<"2 : Available rooms\n"<<endl
+            <<"Enter your choice : ";
+
+        cin>>choice;
+
+        if(choice == 1){    //check your bill
+            system("cls");
+
+            int roomN;
+            string name,address,roomType;
+            long long int mobile;
+            int days,roomNumber;
+            float bill;
+
+            cout<<"--------Check your Bill-Invoice-------\n"<<endl;
+            cout<<"Enter your Room number : ";
+            cin>>roomN;
+
+            ifstream fin;
+            fin.open("Hotel.txt");
+
+            while(1){
+                fin>>roomNumber>>name>>address>>mobile>>roomType>>days>>bill;
+                if(fin.eof()){
+                    break;
+                }
+                if(roomN==roomNumber){
+                    Bill(name,address,mobile,roomNumber,roomType,days,bill);
+                    cout<<"\n\n";
+                    goto customer;
+
+                    break;
+                }
+            }
+            fin.close();
         }
     }
 }
