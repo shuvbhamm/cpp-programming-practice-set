@@ -134,7 +134,7 @@ main(){
                 if(roomType=="DELUXE"){
                     bill=days*4000;
                 }
-                if(roomType=="FULLDELUXE"){
+                if(roomType=="BANQUET"){
                     bill=days*5000;
                 }
                 if(roomType=="GENERAL"){
@@ -316,7 +316,8 @@ main(){
 
         cout<<"---------Welcome to Hotel Vrindavan---------\n"<<endl
             <<"1 : Check your Bill invoice"<<endl
-            <<"2 : Available rooms\n"<<endl
+            <<"2 : Available rooms"<<endl
+            <<"3 : EXIT\n"<<endl
             <<"Enter your choice : ";
 
         cin>>choice;
@@ -351,6 +352,37 @@ main(){
                 }
             }
             fin.close();
+        }
+        if(choice == 2)     //check available room
+        {
+            system("cls");
+            int counter=0;
+
+            cout<<"--------Available Rooms(Vacant Rooms )--------\n"<<endl;
+
+            for(int i=1;i<=totalRooms;i++)
+            {
+                int flag=0;
+                for(int j=0;j<OccupiedRoom.size();j++)
+                {
+                    if(i==OccupiedRoom[j])
+                    {
+                        flag=1;
+                    }
+                }
+                if(flag==0){
+                    (counter%2==0)?cout<<i<<"\t":cout<<i<<"\n";
+                    counter++;
+                }
+            }
+            cout<<"\n\nTotal VACANT ROOMS : "<<counter<<" rooms";
+
+            cout<<"\n\n\n\n";
+            goto customer;
+        }
+        if(choice == 3)     //Home Main menu
+        {
+            goto home;
         }
     }
 }
